@@ -1,7 +1,5 @@
 <?php
 
-
-
     namespace app\controllers;
     use app\models\user;
     use src\middleware;
