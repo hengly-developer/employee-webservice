@@ -1,0 +1,19 @@
+<?php
+
+    namespace app\models;
+
+    use Illuminate\Database\Eloquent\Model;
+
+    class Category extends Model {
+
+        public $timestamps = false;
+        protected $table = 'category';
+        protected $fillable = [
+            'name'
+        ];
+
+        public function employee(){
+
+            return $this->hasMany('app\models\employees', 'category_id');
+        }
+    }
