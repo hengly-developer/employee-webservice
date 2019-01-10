@@ -6,12 +6,18 @@
 
     class Employees extends Model {
 
-        public $timestamps = false;
+        // public $timestamps = false;
         protected $table = 'employees';
         protected $fillable = [
+            'category_id',
+            'department_id',
+            'branch_id',
+            'post_id',
             'fullname',
+            'user_id',
             'email',
-            'address'
+            'address',
+            'phone'
         ];
 
         public function category(){

@@ -38,6 +38,13 @@ $app->get('/singlePost/[{id}]', \app\controllers\postcontroller::class . ':singl
 $app->put('/updatePost/[{id}]', \app\controllers\postcontroller::class . ':updatePost');
 $app->delete('/deletePost/[{id}]', \app\controllers\postcontroller::class . ':deletePost');
 
+//Employee Routes
+$app->post('/createEmployee', \app\controllers\employeescontroller::class . ':createEmployee');
+$app->get('/getEmployee', \app\controllers\employeescontroller::class . ':getallEmployee');
+$app->get('/singleEmployee/[{id}]', \app\controllers\employeescontroller::class . ':singleEmployee');
+$app->put('/updateEmployee/[{id}]', \app\controllers\employeescontroller::class . ':updateEmployee');
+$app->delete('/deleteEmployee/[{id}]', \app\controllers\employeescontroller::class . ':deleteEmployee');
+
 //LogIn
 $app->post('/login', \app\controllers\logincontroller::class . ':login');
 
