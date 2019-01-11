@@ -16,10 +16,6 @@
             'phone'
         ];
 
-        public function post(){
-            return $this->hasMany('app\models\post', 'user_id');
-        }
-
         public function employee(){
             return $this->hasOne('app\models\employees', 'user_id');
         }

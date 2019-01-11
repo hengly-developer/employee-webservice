@@ -8,9 +8,11 @@ class CreateCategoriesTable extends AbstractMigration
     public function up()
     {
         $tab = $this->table('categories');
-        $tab->addColumn('name', 'string')
+        $tab->addColumn('employee_id','integer')
+            ->addColumn('education_id', 'integer')
+            ->addColumn('experience_id', 'integer')
+            ->addColumn('skill_id', 'integer')
             ->addTimestamps()
-            ->addIndex('name', ['unique' => true, 'name' => 'idx_categories_name'])
             ->save();
     }
     public function down()

@@ -18,13 +18,10 @@
         public function createPost(Request $request, Response $response, array $args){
 
             $posts = $request->getParsedBody();
-
-            $user = User::select('id')->where('username', $posts['user_id'])->first();
             
             $data = Post::create([
                 'title' => $posts['title'],
-                'description' => $posts['description'],
-                'user_id' => $user->id
+                'description' => $posts['description']
             ]);
 
             $response = $response->withJson(['Message' => 'Post Created']);

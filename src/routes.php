@@ -11,7 +11,7 @@ header("Access-Control-Allow-Headers: authorization, Content-Type, application/j
 $app->group('/api', function () use ($app){
 
 //Register
-$app->get('/allusers', \app\controllers\usercontroller::class . ':allusers');
+$app->get('/getUser', \app\controllers\usercontroller::class . ':allusers');
 $app->get('/singleuser/[{id}]', \app\controllers\usercontroller::class . ':singleuser');
 $app->post('/createUser', \app\controllers\usercontroller::class . ':create');
 $app->put('/updateUser/{id}', \app\controllers\usercontroller::class . ':update');
@@ -26,7 +26,7 @@ $app->delete('/deleteDepartment/[{id}]', \app\controllers\departmentcontroller::
 
 //Branch Routes
 $app->post('/createBranch', \app\controllers\branchcontroller::class . ':create');
-$app->get('/getbranch', \app\controllers\branchcontroller::class . ':getallbranch');
+$app->get('/getBranch', \app\controllers\branchcontroller::class . ':getallbranch');
 $app->get('/singleBranch/[{id}]', \app\controllers\branchcontroller::class . ':singlebranch');
 $app->put('/updateBranch/[{id}]', \app\controllers\branchcontroller::class . ':updateBranch');
 $app->delete('/deleteBranch/[{id}]', \app\controllers\branchcontroller::class . ':deleteBranch');

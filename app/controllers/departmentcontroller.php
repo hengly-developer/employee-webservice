@@ -12,7 +12,7 @@
 
     class DepartmentController extends Controller{
         
-        //Create Branch
+        //Create Department
         public function createDepartment(Request $request, Response $response, array $args){
 
             $department = $request->getParsedBody();
@@ -28,7 +28,7 @@
                     ->withStatus(200);
         }
 
-        //Get Single Branch
+        //Get Single Department
         public function singleDepartment(Request $request, Response $response, array $args){
 
             $department = Department::find($args['id']);
@@ -43,7 +43,7 @@
         }
 
 
-        //Get All Branch
+        //Get All Department
         public function getallDepartment(Request $request, Response $response, array $args){
 
             $department = Department::all();
@@ -57,7 +57,7 @@
                     ->withStatus(200);
         }
 
-        //Update Branch
+        //Update Department
         public function updateDepartment(Request $request, Response $response, array $args){
 
             $department = $request->getParsedBody();
@@ -72,7 +72,7 @@
                     ->withStatus(200);
         }
 
-        //Delete Branch
+        //Delete Department
         public function deleteDepartment(Request $request, Response $response, array $args){
 
             $department = Department::destroy($args['id']);

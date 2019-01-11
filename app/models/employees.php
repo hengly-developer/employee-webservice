@@ -9,12 +9,11 @@
         // public $timestamps = false;
         protected $table = 'employees';
         protected $fillable = [
-            'category_id',
             'department_id',
             'branch_id',
-            'post_id',
             'fullname',
             'user_id',
+            'post_id',
             'email',
             'address',
             'phone'
@@ -34,5 +33,9 @@
 
         public function user(){
             return $this->belongsTo('app\models\user', 'id');
+        }
+
+        public function post(){
+            return $this->belongsTo('app\models\post', 'emp_id');
         }
     }

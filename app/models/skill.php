@@ -4,18 +4,17 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Post extends Model {
+    class Skill extends Model {
 
         // public $timestamps = false;
-        protected $table = 'posts';
+        protected $table = 'skill';
         protected $fillable = [
-            'title',
+            'name',
             'description'
-            
         ];
 
-        public function employee(){
+        public function category(){
 
-            return $this->hasMany('app\models\employees', 'id');
+            return $this->belongsToMany('app\models\category', 'skill_id');
         }
     }

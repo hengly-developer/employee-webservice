@@ -9,11 +9,23 @@
         public $timestamps = false;
         protected $table = 'categories';
         protected $fillable = [
-            'name'
+            'education_id',
+            'skill_id',
+            'experience_id',
+
         ];
 
-        public function employee(){
+        public function education(){
 
-            return $this->hasMany('app\models\employees', 'category_id');
+            return $this->hasMany('app\models\education', 'id');
+        }
+
+        public function experince(){
+            return $this->hasMany('app\models\experince', 'id');
+        }
+
+        
+        public function skill(){
+            return $this->hasMany('app\models\skill', 'id');
         }
     }

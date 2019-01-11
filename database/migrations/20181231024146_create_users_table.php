@@ -14,7 +14,6 @@ class CreateUsersTable extends AbstractMigration
             ->addColumn('position', 'string',  ['limit' => 50])
             ->addColumn('phone', 'string',  ['limit' => 20])
             ->addTimestamps()
-            ->addIndex('email', ['unique' => true, 'name' => 'idx_users_email'])
             ->save();
     }
     public function down()

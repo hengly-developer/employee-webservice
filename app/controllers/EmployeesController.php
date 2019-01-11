@@ -6,34 +6,31 @@
     use app\models\branch;
     use app\models\category;
     use app\models\employees;
+    use app\models\post;
     use src\middleware;
     use Psr\Http\Message\ServerRequestInterface as Request;
     use Psr\Http\Message\ResponseInterface as Response;
     use Illuminate\Database\Capsule\Manager as DB;
-    use Ramsey\Uuid\Uuid;
-    use Firebase\JWT\JWT;
-    use Tuupola\Base62;
     use \Datetime;
 
     class EmployeesController extends Controller{
 
-        //Create Post
+        //Create Employee
         public function createEmployee(Request $request, Response $response, array $args){
 
             $employees = $request->getParsedBody();
 
             $user = User::select('id')->where('username', $employees['user_id'])->first();
             $branch = Branch::select('id')->where('name', $employees['branch_id'])->first();
-            $category = Category::select('id')->where('name', $employees['category_id'])->first();
             $department = Department::select('id')->where('name', $employees['department_id'])->first();
+            $post = Post::select('id')->where('title', $employees['post_id'])->first();
 
             $data = Employees::create([
-                'category_id' => $category->id,
                 'department_id' => $department->id,
                 'branch_id' => $branch->id,
-                'category_id' => $category->id,
                 'fullname' => $employees['fullname'],
                 'user_id' => $user->id,
+                'post_id' => $post->id,
                 'email' => $employees['email'],
                 'address' => $employees['address'],
                 'phone' => $employees['phone'],
@@ -46,7 +43,7 @@
                     ->withStatus(200);
         }
 
-        //Get Single Post
+        //Get Single Employee
         public function singleEmployee(Request $request, Response $response, array $args){
 
             $employees = Employees::find($args['id']);
@@ -60,14 +57,14 @@
                     ->withStatus(200);
         }
 
-        //Get All Post
+        //Get All Employee
         public function getallEmployee(Request $request, Response $response, array $args){
-
+            
             $employees = Employees::all();
 
-            foreach($employees as $employee){
-                $e = $employee->Category->name;
-            }
+            // foreach($employees as $employee){
+            //     $e = $employee->Category->name;
+            // }
 
             $response_data = array();
             $response_data['employees'] = $employees;
@@ -78,17 +75,22 @@
                     ->withStatus(200);
         }
 
-        //Update Post
+        //Update Employee
         public function updateEmployee(Request $request, Response $response, array $args){
 
             $employees = $request->getParsedBody();
+
+            $user = User::select('username')->where('id', $employees['user_id'])->first();
+            $branch = Branch::select('name')->where('id', $employees['branch_id'])->first();
+            $department = Department::select('id')->where('name', $employees['department_id'])->first();
+            $post = Post::select('title')->where('id', $employees['post_id'])->first();
+
             $data = Employees::where('id', $args['id'])->update([
-                'category_id' => $category->id,
-                'department_id' => $department->id,
-                'branch_id' => $branch->id,
-                'category_id' => $category->id,
+                'department_id' =>$employees['department_id'],
+                'branch_id' => $employees['branch_id'],
                 'fullname' => $employees['fullname'],
-                'user_id' => $user->id,
+                'user_id' =>$employees['user_id'],
+                'post_id' => $employees['post_id'],
                 'email' => $employees['email'],
                 'address' => $employees['address'],
                 'phone' => $employees['phone']
@@ -101,7 +103,7 @@
                     ->withStatus(200);
         }
 
-        //Delete Post
+        //Delete Employee
         public function deleteEmployee(Request $request, Response $response, array $args){
 
             $employees = Employees::destroy($args['id']);
