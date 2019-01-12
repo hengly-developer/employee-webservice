@@ -14,11 +14,12 @@
             'company',
             'startdate',
             'enddate',
-            'description'
+            'description',
+            'employee_id'
         ];
 
-        public function experience(){
+        public function employees(){
 
-            return $this->belongsToMany('app\models\category', 'experince_id');
+            return $this->belongsTo('app\models\employees', 'id');
         }
     }

@@ -16,6 +16,6 @@
 
         public function employee(){
 
-            return $this->hasMany('app\models\employees', 'id');
+            return $this->hasMany('app\models\employee_detail', 'id');
         }
     }

@@ -3,11 +3,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateCategoriesTable extends AbstractMigration
+class CreateEmployeeDetailTable extends AbstractMigration
 {
     public function up()
     {
-        $tab = $this->table('categories');
+        $tab = $this->table('employee_detail');
         $tab->addColumn('employee_id','integer')
             ->addColumn('education_id', 'integer')
             ->addColumn('experience_id', 'integer')
@@ -17,6 +17,6 @@ class CreateCategoriesTable extends AbstractMigration
     }
     public function down()
     {
-        $this->dropTable('categories');
+        $this->dropTable('employee_detail');
     }
 }

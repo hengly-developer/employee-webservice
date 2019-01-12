@@ -19,9 +19,10 @@
             'phone'
         ];
 
-        public function category(){
-            return $this->belongsTo('app\models\category', 'id');
-        }
+        // public function employee_detail(){
+            
+        //     return $this->belongsTo('app\models\employee_detail', 'id');
+        // }
 
         public function department(){
             return $this->belongsTo('app\models\department', 'id');
@@ -38,4 +39,15 @@
         public function post(){
             return $this->belongsTo('app\models\post', 'emp_id');
         }
+
+        public function skill(){
+            return $this->hasMany('app\models\skill', 'employee_id');
+        }
+        public function education(){
+            return $this->hasMany('app\models\education', 'employee_id');
+        }
+        public function experience(){
+            return $this->hasMany('app\models\experience', 'employee_id');
+        }
+
     }

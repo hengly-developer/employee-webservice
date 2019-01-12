@@ -10,10 +10,12 @@ class CreateEducationTable extends AbstractMigration
         $tab = $this->table('education');
         $tab->addColumn('name','string')
             ->addColumn('subject', 'string')
-            ->addColumn('startdate', 'integer')
-            ->addColumn('enddate','string')
+            ->addColumn('startdate', 'datetime')
+            ->addColumn('enddate','datetime')
             ->addColumn('description', 'string')
+            ->addColumn('employee_id', 'integer')
             ->addTimestamps()
+            ->addForeignKey('employee_id', 'employees','id', ['delete'=>'CASCADE','update'=>'CASCADE'])
             ->save();
     }
     public function down()

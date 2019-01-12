@@ -10,11 +10,12 @@
         protected $table = 'skill';
         protected $fillable = [
             'name',
-            'description'
+            'description',
+            'employee_id'
         ];
 
-        public function category(){
+        public function employees(){
 
-            return $this->belongsToMany('app\models\category', 'skill_id');
+            return $this->belongsTo('app\models\employees', 'id');
         }
     }

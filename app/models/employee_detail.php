@@ -4,10 +4,10 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Category extends Model {
+    class Employee_Detail extends Model {
 
         public $timestamps = false;
-        protected $table = 'categories';
+        protected $table = 'employee_detail';
         protected $fillable = [
             'education_id',
             'skill_id',
@@ -20,8 +20,8 @@
             return $this->hasMany('app\models\education', 'id');
         }
 
-        public function experince(){
-            return $this->hasMany('app\models\experince', 'id');
+        public function experience(){
+            return $this->hasMany('app\models\experience', 'id');
         }
 
         

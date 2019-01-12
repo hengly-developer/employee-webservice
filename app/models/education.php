@@ -13,11 +13,12 @@
             'subject',
             'startdate',
             'enddate',
-            'description'
+            'description',
+            'employee_id'
         ];
 
-        public function category(){
+        public function employees(){
 
-            return $this->belongsToMany('app\models\category', 'education_id');
+            return $this->belongsTo('app\models\employees', 'id');
         }
     }
