@@ -11,8 +11,8 @@ class CreateUsersTable extends AbstractMigration
         $tab->addColumn('username', 'string', ['limit' => 50])
             ->addColumn('email', 'string', ['limit' => 50])
             ->addColumn('password', 'string', ['limit' => 255])
-            ->addColumn('position', 'string',  ['limit' => 50])
-            ->addColumn('phone', 'string',  ['limit' => 20])
+            ->addColumn('remember_token', 'string',  ['limit' => 50])
+            ->addColumn('remember_identifier', 'string',  ['limit' => 20])
             ->addTimestamps()
             ->save();
     }

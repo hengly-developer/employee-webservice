@@ -46,15 +46,14 @@
             $users = $request->getParsedBody();
             $u = User::where('email', $users['email']);
             if($u->count() == 0){
-
+                
                 $datas = User::create([
                     'username' => $users['username'],
                     'email' => $users['email'],
                     'password' => password_hash($users['password'], PASSWORD_BCRYPT),
-                    'position' => $users['position'],
-                    'phone' => $users['phone']
+                    'remember_token' => $users['remember_token'],
+                    'remember_identifier' => $users['remember_identifier']
                 ]);
-                print_r($datas->id);
 
                 $now = new DateTime();
                 $future = new DateTime("now +2 hours");

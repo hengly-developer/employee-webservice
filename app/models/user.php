@@ -12,8 +12,8 @@
             'username',
             'email',
             'password',
-            'position',
-            'phone'
+            'remember_token',
+            'remember_identifier'
         ];
 
         public function employee(){
