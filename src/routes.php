@@ -67,6 +67,13 @@ $app->group('/api', function () use ($app){
     $app->put('/updateSkill/[{id}]', \app\controllers\skillcontroller::class . ':updateSkill');
     $app->delete('/deleteSkill/[{id}]', \app\controllers\skillcontroller::class . ':deleteSkill');
 
+    //Role Routes
+    $app->post('/createRole', \app\controllers\RoleController::class . ':createRole');
+    $app->get('/getRole', \app\controllers\RoleController::class . ':getRole');
+    $app->get('/getsingleRole/[{id}]', \app\controllers\RoleController::class . ':getsingleRole');
+    $app->put('/updateRole/[{id}]', \app\controllers\RoleController::class . ':updateRole');
+    $app->delete('/deleteRole/[{id}]', \app\controllers\RoleController::class . ':deleteRole');
+
     //LogIn
     $app->post('/login', \app\controllers\logincontroller::class . ':login');
 
